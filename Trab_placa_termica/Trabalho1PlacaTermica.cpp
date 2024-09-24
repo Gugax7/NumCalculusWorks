@@ -8,7 +8,6 @@ int main(){
     // draw matrix
     int mat[300][300];
     int n = 10;
-    int matrix_size = n*n;
     double precision_checker;
     double side_temperatures[100][100];
     double malha1[100][100];
@@ -23,6 +22,7 @@ int main(){
     for(int k = 0; k < n*n; k++){
         current_x[k] = 0;
     }
+    // remove trash from matrix
     for(int i = 0; i< n+1; i++){
         for(int j = 0; j< n+1; j++){
             side_temperatures[i][j] = 0;
@@ -47,16 +47,18 @@ int main(){
         }
     }
 
-    for(int i = 0; i< n; i++){
+// print side initial sum of temperatures.
+    /*for(int i = 0; i< n; i++){
         for(int j = 0; j< n; j++){
             cout << side_temperatures[i][j] << " ";
         }
         cout << endl;
-    }
+    }*/
+
     cout << "-----------------------------------------" << endl;
     int k;
     int trys = 0;
-    // add values of the sides
+// add values of the sides
     do{
         trys++;
         k = 0;
@@ -97,26 +99,27 @@ int main(){
                 
                 k++;
             }
-            /*cout << endl << endl << "Vector subtracted: " << endl;
+            /* If i want to see Vector subtracted.
+            cout << endl << endl << "Vector subtracted: " << endl;
             for (int i = 0; i < n*n; i++){
                 cout << vector_subtracted[i] << endl;
                 }
             cout << endl << endl << endl;*/
 
-            cout << biggest_from_subtraction << " " << biggest_from_current << endl << endl;
-
-            for(int i = 0; i< n; i++){
+            //cout << biggest_from_subtraction << " " << biggest_from_current << endl << endl; // to know how if the size of vector is okay.
+// print temperatures
+        for(int i = 0; i< n; i++){
             for(int j = 0; j< n; j++){
                 cout << malha1[i][j] << " ";
             }
             cout << endl;
         }
+        cout << endl << endl;
         precision_checker = biggest_from_subtraction / biggest_from_current;
-        cout << endl << endl << setprecision(20) << "precision: " << precision_checker << endl << endl;
-    }while(precision_checker > 0.0000000000000005); // 16 casas decimais após a virgula ele chega
+        //cout << endl << endl << setprecision(20) << "precision: " << precision_checker << endl << endl;
+    }while(precision_checker > 0.000005); // 16 casas decimais após a virgula ele chega
     
 
-    // print temperatures
     
     return 0;
 }
